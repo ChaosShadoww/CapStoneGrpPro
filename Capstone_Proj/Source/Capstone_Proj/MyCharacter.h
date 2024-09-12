@@ -18,6 +18,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SpawnedActorTest")				//Function callable in blueprints this is a tag
 	void SpawnActor();
 
+
 	//Parameter of Actor tag = TsUBCLASS // Variable for our actor
 	UPROPERTY(EditAnywhere)													// Call from wherever in our blueprint
 	TSubclassOf<AActor> actorBPToSpawn;
