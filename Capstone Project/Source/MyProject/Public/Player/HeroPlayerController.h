@@ -7,7 +7,9 @@
 #include "HeroPlayerController.generated.h"
 
 
-class UInputMappingContext;
+class UInputMappingContext;				//forward declared
+class UInputAction;
+struct FInputActionValue;
 
 /**
  * 
@@ -25,5 +27,9 @@ protected:
 
 private:
 	UPROPERTY(EditAnywhere, Category="Input")
-	TObjectPtr<UInputMappingContext> HeroContext;
+	TObjectPtr<UInputMappingContext> HeroContext;			//IMC Blueprint forward declare, also add to module names in target.cs build file (input)
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> MoveAction;
+	void Move(const FInputActionValue& InputActionValue);
 };

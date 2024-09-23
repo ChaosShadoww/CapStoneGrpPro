@@ -15,3 +15,4 @@ void AHeroCharacter::Turn(float TurnVector)
 		HeroSprite->SetRelativeRotation(FRotator(0.0f, 180.0f, 0.0f));
 	}
 }
+

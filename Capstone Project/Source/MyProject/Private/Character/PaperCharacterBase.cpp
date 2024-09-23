@@ -4,6 +4,7 @@
 #include "Character/PaperCharacterBase.h"
 #include "PaperFlipbookComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 
 APaperCharacterBase::APaperCharacterBase()
@@ -34,8 +35,12 @@ APaperCharacterBase::APaperCharacterBase()
 	Sward->SetupAttachment(HeroSprite, FName("WeaponHandSocket"));
 	Sward->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
+	GetCharacterMovement()->bConstrainToPlane = true;
+	GetCharacterMovement()->bSnapToPlaneAtStart = true;
 
-
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationRoll = false;
+	bUseControllerRotationYaw = false;
 }
 
 void APaperCharacterBase::BeginPlay()

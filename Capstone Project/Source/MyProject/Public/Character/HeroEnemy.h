@@ -14,4 +14,7 @@ class MYPROJECT_API AHeroEnemy : public APaperCharacterBase
 {
 	GENERATED_BODY()
 	
+private:
+	UFUNCTION(BlueprintCallable)
+	void Turn(float TurnVector);
 };

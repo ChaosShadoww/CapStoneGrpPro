@@ -17,4 +17,5 @@ class MYPROJECT_API AHeroCharacter : public APaperCharacterBase
 private:
 	UFUNCTION(BlueprintCallable)
 	void Turn(float TurnVector);
+
 };
