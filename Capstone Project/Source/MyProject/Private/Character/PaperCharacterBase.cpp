@@ -43,6 +43,11 @@ APaperCharacterBase::APaperCharacterBase()
 	bUseControllerRotationYaw = false;
 }
 
+UAbilitySystemComponent* APaperCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 void APaperCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();

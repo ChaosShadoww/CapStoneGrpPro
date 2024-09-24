@@ -10,6 +10,7 @@
 class UInputMappingContext;				//forward declared
 class UInputAction;
 struct FInputActionValue;
+class IEnemyInterface;
 
 /**
  * 
@@ -20,6 +21,7 @@ class MYPROJECT_API AHeroPlayerController : public APlayerController
 	GENERATED_BODY()
 public:
 	AHeroPlayerController();
+	virtual void PlayerTick(float DeltaTime) override;
 
 protected:
 	virtual void BeginPlay() override;
@@ -32,4 +34,13 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
 	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+
+	//Incorrect way to use interface, you need special wrapper, see below
+	//IEnemyInterface* LastActor;
+	//IEnemyInterface* ThisActor;
+	//Correct Way VVVV
+	TScriptInterface<IEnemyInterface> LastActor;
+	TScriptInterface<IEnemyInterface> ThisActor;
 };
