@@ -21,9 +21,16 @@ private:
 
 public:
 	AHeroEnemy();
+
+	/**Enemy Interface*/
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
+	/**Enemy Interface*/
+
 
 	UPROPERTY(BlueprintReadOnly)
 	bool bHighlighted = false;
+
+protected:
+	virtual void BeginPlay() override;
 };

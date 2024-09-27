@@ -11,7 +11,9 @@
 			"AdditionalDependencies": [
 				"Engine",
 				"PaperZD",
-				"GameplayAbilities"
+				"GameplayAbilities",
+				"UMG",
+				"CoreUObject"
 			]
 		}
 	],

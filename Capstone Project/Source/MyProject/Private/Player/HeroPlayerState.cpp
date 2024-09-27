@@ -10,6 +10,7 @@ AHeroPlayerState::AHeroPlayerState()
 	NetUpdateFrequency = 100;			//How Often Server updates clients ... Replication
 	AbilitySystemComponent = CreateDefaultSubobject<UHeroAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UHeroAttributeSet>("AttributeSet");
 }

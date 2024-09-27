@@ -27,6 +27,7 @@ AHeroEnemy::AHeroEnemy()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UHeroAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UHeroAttributeSet>("AttributeSet");
 	
@@ -46,4 +47,11 @@ void AHeroEnemy::UnHighlightActor()
 	GetSprite()->SetRenderCustomDepth(false);
 	Sward->SetRenderCustomDepth(false);
 	
+}
+
+void AHeroEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }

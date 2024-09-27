@@ -25,8 +25,13 @@ void AHeroPlayerController::BeginPlay()
 
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()); //to add IMappingContext
 
-	check(Subsystem);										//check subsystem, will crash without subsystem
-	Subsystem->AddMappingContext(HeroContext, 0);			// to retrieve data for controller, use priority
+	if (Subsystem)
+	{
+		Subsystem->AddMappingContext(HeroContext, 0);
+	}
+	//bottom is more for single player, top is for multiplayer ^
+	//check(Subsystem);										//check subsystem, will crash without subsystem
+	//Subsystem->AddMappingContext(HeroContext, 0);			// to retrieve data for controller, use priority
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;

@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Character/PaperCharacterBase.h"
+#include "Player/HeroPlayerState.h"
 #include "HeroCharacter.generated.h"
+
 
 /**
  * 
@@ -17,5 +19,12 @@ class MYPROJECT_API AHeroCharacter : public APaperCharacterBase
 private:
 	UFUNCTION(BlueprintCallable)
 	void Turn(float TurnVector);
+
+	void InitAbilityActorInfo();
+
+public:
+	
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
 
 };
