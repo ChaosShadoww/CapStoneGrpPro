@@ -34,6 +34,8 @@ void AHeroEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 		//big no no
 		UHeroAttributeSet* MutableHeroAttributeSet = const_cast<UHeroAttributeSet*>(HeroAttributeSet); //caution breaking const and encapsulation rules
 		MutableHeroAttributeSet->SetHealth(HeroAttributeSet->GetHealth() + 25.f);
+
+		MutableHeroAttributeSet->SetMana(HeroAttributeSet->GetMana() - 25.f);
 		Destroy();
 	}
 }

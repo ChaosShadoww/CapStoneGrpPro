@@ -10,3 +10,11 @@ void UHeroWidgetController::SetWidgetControllerParams(const FWidgetControllerPar
 	AbilitySystemComponent = WCParams.AbilitySystemComponent;
 	AttributeSet = WCParams.AttributeSet;
 }
+
+void UHeroWidgetController::BroadcastInitialValues()
+{
+}
+
+void UHeroWidgetController::BindCallbacksToDependencies()
+{
+}
