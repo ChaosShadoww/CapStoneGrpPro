@@ -13,13 +13,16 @@ class UAbilitySystemComponent;
 USTRUCT(BlueprintType)
 struct FWidgetControllerParams
 {
+	//Struct for key variables of objects related to the Widget Controller: Player Controller, Player State, ASC, Attribute	Set
+	//To make it easy to initialize a Widget Controller
+
 	GENERATED_BODY()
 
-	FWidgetControllerParams() {}
-	FWidgetControllerParams(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
-		: PlayerController(PC), PlayerState(PS), AbilitySystemComponent(ASC), AttributeSet(AS) {}
+	FWidgetControllerParams() {}																						//EMPTY CONSTRCUTOR
+	FWidgetControllerParams(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)	//Constructor with initializer List
+		: PlayerController(PC), PlayerState(PS), AbilitySystemComponent(ASC), AttributeSet(AS) {}						// Member initializer list
 
-
+	//Initializer Member Variables for Constructor
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<APlayerController> PlayerController = nullptr;
 
@@ -43,7 +46,7 @@ class MYPROJECT_API UHeroWidgetController : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
+	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);		// Function to set variables for struct of widget controller
 
 	virtual void BroadcastInitialValues();
 	virtual void BindCallbacksToDependencies();

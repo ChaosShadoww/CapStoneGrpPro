@@ -5,6 +5,7 @@
 
 void UHeroWidgetController::SetWidgetControllerParams(const FWidgetControllerParams& WCParams)
 {
+	//Pass in the data for the member variables for struct in widget controller
 	PlayerController = WCParams.PlayerController;
 	PlayerState = WCParams.PlayerState;
 	AbilitySystemComponent = WCParams.AbilitySystemComponent;

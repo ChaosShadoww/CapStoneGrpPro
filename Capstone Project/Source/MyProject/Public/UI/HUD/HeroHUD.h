@@ -24,8 +24,10 @@ public:
 	UPROPERTY()
 	TObjectPtr<UHeroUserWidget> OverlayWidget;
 
+	//Function that creates the widget controller, only if it hasn't been created yet, if it has, then just return the one widget controller
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
 
+	//Function to initialize the four key variables for widget controller when creating, returning widget controller in the GetOverlayWidgetController func
 	void InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS);
 
 
@@ -38,6 +40,7 @@ private:
 	UPROPERTY()
 	TObjectPtr<UOverlayWidgetController> OverlayWidgetController;
 
+	//UClass for GetOverlayWidgetController Function
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
 };

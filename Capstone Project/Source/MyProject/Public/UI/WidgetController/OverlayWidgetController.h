@@ -7,7 +7,7 @@
 #include "OverlayWidgetController.generated.h"
 
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);				// Macros that define delegates
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
@@ -18,13 +18,16 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, N
 UCLASS(BlueprintType, Blueprintable)
 class MYPROJECT_API UOverlayWidgetController : public UHeroWidgetController
 {
+	// Child Class for Hero Widget Controller
 	GENERATED_BODY()
 	
 public:
 	virtual void BroadcastInitialValues() override;
 	virtual void BindCallbacksToDependencies() override;
 
-	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
+	/**		Events Based on Delegates, these are for broadcasting changes to health and Mana		*/
+
+	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")					
 	FOnHealthChangedSignature OnHealthChanged;
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
@@ -35,6 +38,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnMaxManaChangedSignature OnMaxManaChanged;
+
+
+	/*********************************    End of Events        **************************************/
 
 protected:
 	void HealthChanged(const FOnAttributeChangeData& Data) const;

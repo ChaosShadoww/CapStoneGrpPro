@@ -30,11 +30,12 @@ void AHeroCharacter::InitAbilityActorInfo()
 	AbilitySystemComponent = HeroPlayerState->GetAbilitySystemComponent();
 	AttributeSet = HeroPlayerState->GetAttributeSet();
 
-	if (AHeroPlayerController* HeroPlayerController = Cast<AHeroPlayerController>(GetController()))
+	// HUD -> Overlay Widget Controller init
+	if (AHeroPlayerController* HeroPlayerController = Cast<AHeroPlayerController>(GetController()))		//Check if player controller is null, yes in multiplayer
 	{
 		if (AHeroHUD* HeroHUD = Cast<AHeroHUD>(HeroPlayerController->GetHUD()))
 		{
-			HeroHUD->InitOverlay(HeroPlayerController, HeroPlayerState, AbilitySystemComponent, AttributeSet);
+			HeroHUD->InitOverlay(HeroPlayerController, HeroPlayerState, AbilitySystemComponent, AttributeSet);			//Data going to HUD (viewport)
 		}
 	}
 

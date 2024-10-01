@@ -10,6 +10,10 @@ void UOverlayWidgetController::BroadcastInitialValues()
 	//delegates for broadcasting values
 	//OnHealthChanged.Broadcast(100.f); This is hardcoded
 	const UHeroAttributeSet* HeroAttributeSet = CastChecked<UHeroAttributeSet>(AttributeSet);
+
+
+	/**** Here we are Raising the Events from Overlay Widget Controller ****/
+
 	OnHealthChanged.Broadcast(HeroAttributeSet->GetHealth());
 	OnMaxHealthChanged.Broadcast(HeroAttributeSet->GetMaxHealth());
 	OnManaChanged.Broadcast(HeroAttributeSet->GetMana());

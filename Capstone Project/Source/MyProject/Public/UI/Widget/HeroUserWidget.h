@@ -18,7 +18,7 @@ public:
 
 	//Sets Widget Controller
 	UFUNCTION(BlueprintCallable)
-	void SetWidgetController(UObject* InWidgetController);
+	void SetWidgetController(UObject* InWidgetController);						//Set widget Controller
 
 	UPROPERTY(BlueprintReadOnly)												//~ Tied with WidgetControllerSet Function
 	TObjectPtr<UObject> WidgetController;
