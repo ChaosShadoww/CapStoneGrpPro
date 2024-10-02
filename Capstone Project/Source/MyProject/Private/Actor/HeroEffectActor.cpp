@@ -68,7 +68,7 @@ void AHeroEffectActor::BeginPlay()
 	//Sphere->OnComponentEndOverlap.AddDynamic(this, &AHeroEffectActor::EndOverlap);	//DEPRECATED
 }
 
-void AHeroEffectActor::ApplyEffectToTarget(AActor* Target, TSubclassOf<UGameplayEffect> GameplayEffectClass)
+void AHeroEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)
 {
 	
 	/**
@@ -83,7 +83,7 @@ void AHeroEffectActor::ApplyEffectToTarget(AActor* Target, TSubclassOf<UGameplay
 	*/
 
 	//storing AbilitySystemComponent
-	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Target);
+	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 	if (TargetASC == nullptr) return;
 
 	check(GameplayEffectClass);
