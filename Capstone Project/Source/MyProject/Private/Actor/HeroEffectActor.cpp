@@ -141,7 +141,8 @@ void AHeroEffectActor::OnEndOverlap(AActor* TargetActor)
 		{
 			if (TargetASC == HandlePair.Value)
 			{
-				TargetASC->RemoveActiveGameplayEffect(HandlePair.Key);
+				TargetASC->RemoveActiveGameplayEffect(HandlePair.Key, 1); //Removes one stack
+				HandlesToRemove.Add(HandlePair.Key);
 			}
 		}
 		for (auto& Handle : HandlesToRemove)	//FActiveGameplayEffectHandle&
