@@ -20,7 +20,7 @@ private:
 	UFUNCTION(BlueprintCallable)
 	void Turn(float TurnVector);
 
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
 
 public:
 	

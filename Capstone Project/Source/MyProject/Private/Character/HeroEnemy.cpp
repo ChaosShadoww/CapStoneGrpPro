@@ -53,5 +53,11 @@ void AHeroEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 
+	InitAbilityActorInfo();
+}
+
+void AHeroEnemy::InitAbilityActorInfo()
+{
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	Cast<UHeroAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 }

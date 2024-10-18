@@ -4,6 +4,7 @@
 #include "Character/HeroCharacter.h"
 #include "Player/HeroPlayerState.h"
 #include "AbilitySystem/HeroAbilitySystemComponent.h"
+#include "AbilitySystemComponent.h"
 #include "Player/HeroPlayerController.h"
 #include "UI/HUD/HeroHUD.h"
 #include "PaperFlipbookComponent.h"
@@ -27,6 +28,8 @@ void AHeroCharacter::InitAbilityActorInfo()
 	AHeroPlayerState* HeroPlayerState = GetPlayerState<AHeroPlayerState>();
 	check(HeroPlayerState);
 	HeroPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(HeroPlayerState, this);
+	Cast<UHeroAbilitySystemComponent>(HeroPlayerState->GetAbilitySystemComponent())->AbilityActorInfoSet();
+
 	AbilitySystemComponent = HeroPlayerState->GetAbilitySystemComponent();
 	AttributeSet = HeroPlayerState->GetAttributeSet();
 

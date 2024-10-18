@@ -52,3 +52,7 @@ void APaperCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 }
+
+void APaperCharacterBase::InitAbilityActorInfo()
+{
+}
