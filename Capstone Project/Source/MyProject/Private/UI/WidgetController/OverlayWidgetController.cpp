@@ -27,6 +27,22 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 {
 	const UHeroAttributeSet* HeroAttributeSet = CastChecked<UHeroAttributeSet>(AttributeSet);
 
+	//Binding delegates through lambdas, replaces delegates binded through callbacks
+#define BIND_DelegateAttribute( AttributeName) AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(\
+	HeroAttributeSet->Get##AttributeName##Attribute()).AddLambda(\
+		[this](const FOnAttributeChangeData& Data) \
+	{\
+		On##AttributeName##Changed.Broadcast(Data.NewValue); \
+	});
+
+	BIND_DelegateAttribute(Health);
+	BIND_DelegateAttribute(MaxHealth);
+	BIND_DelegateAttribute(Mana);
+	BIND_DelegateAttribute(MaxMana);
+#undef BIND_BIND_DelegateAttributes
+
+	/*THIS METHOD IS OVERWRITTEN BY MY MACROS, THIS IS THROUGH DELEGATES PART3: Binding delegates through Callbacks*/
+	/*
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
 		HeroAttributeSet->GetHealthAttribute()).AddUObject(this, &UOverlayWidgetController::HealthChanged);
 
@@ -37,7 +53,7 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 		HeroAttributeSet->GetManaAttribute()).AddUObject(this, &UOverlayWidgetController::ManaChanged);
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-		HeroAttributeSet->GetMaxManaAttribute()).AddUObject(this, &UOverlayWidgetController::MaxManaChanged);
+		HeroAttributeSet->GetMaxManaAttribute()).AddUObject(this, &UOverlayWidgetController::MaxManaChanged);*/
 
 	Cast<UHeroAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
 		[this](const FGameplayTagContainer& AssetTags)/* The [] allows member functions to be used, its a capture */
@@ -66,22 +82,25 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	);
 }
 
-void UOverlayWidgetController::HealthChanged(const FOnAttributeChangeData& Data) const
-{
-	OnHealthChanged.Broadcast(Data.NewValue);
-}
 
-void UOverlayWidgetController::MaxHealthChanged(const FOnAttributeChangeData& Data) const
-{
-	OnMaxHealthChanged.Broadcast(Data.NewValue);
-}
+/*THIS METHOD IS OVERWRITTEN BY MY MACROS, THIS IS THROUGH DELEGATES PART2:: Callback functions*/
 
-void UOverlayWidgetController::ManaChanged(const FOnAttributeChangeData& Data) const
-{
-	OnManaChanged.Broadcast(Data.NewValue);
-}
-
-void UOverlayWidgetController::MaxManaChanged(const FOnAttributeChangeData& Data) const
-{
-	OnMaxManaChanged.Broadcast(Data.NewValue);
-}
+//void UOverlayWidgetController::HealthChanged(const FOnAttributeChangeData& Data) const
+//{
+//	OnHealthChanged.Broadcast(Data.NewValue);
+//}
+//
+//void UOverlayWidgetController::MaxHealthChanged(const FOnAttributeChangeData& Data) const
+//{
+//	OnMaxHealthChanged.Broadcast(Data.NewValue);
+//}
+//
+//void UOverlayWidgetController::ManaChanged(const FOnAttributeChangeData& Data) const
+//{
+//	OnManaChanged.Broadcast(Data.NewValue);
+//}
+//
+//void UOverlayWidgetController::MaxManaChanged(const FOnAttributeChangeData& Data) const
+//{
+//	OnMaxManaChanged.Broadcast(Data.NewValue);
+//}
