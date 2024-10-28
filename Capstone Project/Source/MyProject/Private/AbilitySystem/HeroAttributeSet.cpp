@@ -18,11 +18,17 @@ UHeroAttributeSet::UHeroAttributeSet()
 void UHeroAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Strength, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Intelligence, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Constitution, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Dexterity, COND_None, REPNOTIFY_Always);
+
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Mana, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, MaxMana, COND_None, REPNOTIFY_Always);
+
 }
 
 void UHeroAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
@@ -110,6 +116,26 @@ void UHeroAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 		UE_LOG(LogTemp, Warning, TEXT("Health: %f"), GetHealth());
 		UE_LOG(LogTemp, Warning, TEXT("Magnitude: %f"), Data.EvaluatedData.Magnitude);
 	}*/
+}
+
+void UHeroAttributeSet::OnRep_Strength(const FGameplayAttributeData& OldStrength) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Strength, OldStrength);
+}
+
+void UHeroAttributeSet::OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Intelligence, OldIntelligence);
+}
+
+void UHeroAttributeSet::OnRep_Constitution(const FGameplayAttributeData& OldConstitution) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Constitution, OldConstitution);
+}
+
+void UHeroAttributeSet::OnRep_Dexterity(const FGameplayAttributeData& OldDexterity) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Dexterity, OldDexterity);
 }
 
 void UHeroAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
