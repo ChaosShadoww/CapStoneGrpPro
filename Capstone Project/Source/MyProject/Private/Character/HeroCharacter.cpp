@@ -42,6 +42,8 @@ void AHeroCharacter::InitAbilityActorInfo()
 		}
 	}
 
+	InitializePrimaryAttributes();
+
 }
 
 void AHeroCharacter::PossessedBy(AController* NewController)
