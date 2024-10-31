@@ -7,6 +7,7 @@
 #include "PaperZDCharacter.h"
 #include "PaperSpriteComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Interaction/CombatInterface.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "PaperCharacterBase.generated.h"
 
@@ -18,7 +19,7 @@ class UGameplayEffect;
  * 
  */
 UCLASS(Abstract)
-class MYPROJECT_API APaperCharacterBase : public APaperZDCharacter, public IAbilitySystemInterface
+class MYPROJECT_API APaperCharacterBase : public APaperZDCharacter, public IAbilitySystemInterface, public ICombatInterface
 {
 	GENERATED_BODY()
 
@@ -53,5 +54,13 @@ protected:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Attributes")
 	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
 
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Attributes")
+	TSubclassOf<UGameplayEffect> DefaultSecondaryAttributes;
+
+	void ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
+	void InitializeDefaultAttributes() const;
+	/*
 	void InitializePrimaryAttributes() const;
+	void InitializeSecondaryAttributes() const;
+	*/
 };

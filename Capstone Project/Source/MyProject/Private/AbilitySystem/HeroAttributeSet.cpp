@@ -9,20 +9,43 @@
 
 UHeroAttributeSet::UHeroAttributeSet()
 {
-	InitHealth(50.f);
-	InitMaxHealth(100.f);
-	InitMana(50.f);
-	InitMaxMana(100.f);
+	InitHealth(10.f);
+	//InitMaxHealth(100.f);
+	InitMana(10.f);
+	//InitMaxMana(100.f);
 }
 
 void UHeroAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	/*
+	* Primary Attributes
+	*/
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Strength, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Intelligence, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Constitution, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Dexterity, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Wisdom, COND_None, REPNOTIFY_Always);
+	
+	/*
+	* Secondary Attributes
+	*/
+	
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, ArmorClass, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, ArmorPenetration, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, BlockChance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, CriticalHitChance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, CriticalHitDamage, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, CriticalHitResistance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, HealthRegen, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, ManaRegen, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Perception, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Investigation, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Stealth, COND_None, REPNOTIFY_Always);
 
+	/*
+	* Vital Attributes
+	*/
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UHeroAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
 
@@ -136,6 +159,66 @@ void UHeroAttributeSet::OnRep_Constitution(const FGameplayAttributeData& OldCons
 void UHeroAttributeSet::OnRep_Dexterity(const FGameplayAttributeData& OldDexterity) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Dexterity, OldDexterity);
+}
+
+void UHeroAttributeSet::OnRep_Wisdom(const FGameplayAttributeData& OldWisdom) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Wisdom, OldWisdom);
+}
+
+void UHeroAttributeSet::OnRep_ArmorClass(const FGameplayAttributeData& OldArmorClass) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, ArmorClass, OldArmorClass);
+}
+
+void UHeroAttributeSet::OnRep_ArmorPenetration(const FGameplayAttributeData& OldArmorPenetration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, ArmorPenetration, OldArmorPenetration);
+}
+
+void UHeroAttributeSet::OnRep_BlockChance(const FGameplayAttributeData& OldBlockChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, BlockChance, OldBlockChance);
+}
+
+void UHeroAttributeSet::OnRep_CriticalHitChance(const FGameplayAttributeData& OldCriticalHitChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, CriticalHitChance, OldCriticalHitChance);
+}
+
+void UHeroAttributeSet::OnRep_CriticalHitDamage(const FGameplayAttributeData& OldCriticalHitDamage) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, CriticalHitDamage, OldCriticalHitDamage);
+}
+
+void UHeroAttributeSet::OnRep_CriticalHitResistance(const FGameplayAttributeData& OldCriticalHitResistance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, CriticalHitResistance, OldCriticalHitResistance);
+}
+
+void UHeroAttributeSet::OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, HealthRegen, OldHealthRegen);
+}
+
+void UHeroAttributeSet::OnRep_ManaRegen(const FGameplayAttributeData& OldManaRegen) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, ManaRegen, OldManaRegen);
+}
+
+void UHeroAttributeSet::OnRep_Perception(const FGameplayAttributeData& OldPerception) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Perception, OldPerception);
+}
+
+void UHeroAttributeSet::OnRep_Investigation(const FGameplayAttributeData& OldInvestigation) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Investigation, OldInvestigation);
+}
+
+void UHeroAttributeSet::OnRep_Stealth(const FGameplayAttributeData& OldStealth) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UHeroAttributeSet, Stealth, OldStealth);
 }
 
 void UHeroAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const

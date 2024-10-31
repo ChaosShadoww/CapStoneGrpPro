@@ -49,6 +49,11 @@ void AHeroEnemy::UnHighlightActor()
 	
 }
 
+int32 AHeroEnemy::GetPlayerLevel()
+{
+	return Level;
+}
+
 void AHeroEnemy::BeginPlay()
 {
 	Super::BeginPlay();

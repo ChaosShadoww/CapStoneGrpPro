@@ -96,6 +96,95 @@ public:
 
 	UFUNCTION()
 	void OnRep_Dexterity(const FGameplayAttributeData& OldDexterity) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Wisdom, Category = "Primary Attributes")
+	FGameplayAttributeData Wisdom;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, Wisdom);
+
+	UFUNCTION()
+	void OnRep_Wisdom(const FGameplayAttributeData& OldWisdom) const;
+	/*
+		Secondary Attributes
+	*/
+	//Armor Proficiency
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_ArmorClass, Category = "Secondary Attributes")
+	FGameplayAttributeData ArmorClass;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, ArmorClass);
+
+	UFUNCTION()
+	void OnRep_ArmorClass(const FGameplayAttributeData& OldArmorClass) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_ArmorPenetration, Category = "Secondary Attributes")
+	FGameplayAttributeData ArmorPenetration;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, ArmorPenetration);
+
+	UFUNCTION()
+	void OnRep_ArmorPenetration(const FGameplayAttributeData& OldArmorPenetration) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_BlockChance, Category = "Secondary Attributes")
+	FGameplayAttributeData BlockChance;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, BlockChance);
+
+	UFUNCTION()
+	void OnRep_BlockChance(const FGameplayAttributeData& OldBlockChance) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CriticalHitChance, Category = "Secondary Attributes")
+	FGameplayAttributeData CriticalHitChance;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, CriticalHitChance);
+
+	UFUNCTION()
+	void OnRep_CriticalHitChance(const FGameplayAttributeData& OldCriticalHitChance) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CriticalHitDamage, Category = "Secondary Attributes")
+	FGameplayAttributeData CriticalHitDamage;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, CriticalHitDamage);
+
+	UFUNCTION()
+	void OnRep_CriticalHitDamage(const FGameplayAttributeData& OldCriticalHitDamage) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CriticalHitResistance, Category = "Secondary Attributes")
+	FGameplayAttributeData CriticalHitResistance;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, CriticalHitResistance);
+
+	UFUNCTION()
+	void OnRep_CriticalHitResistance(const FGameplayAttributeData& OldCriticalHitResistance) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_HealthRegen, Category = "Secondary Attributes")
+	FGameplayAttributeData HealthRegen;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, HealthRegen);
+
+	UFUNCTION()
+	void OnRep_HealthRegen(const FGameplayAttributeData& OldHealthRegen) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_ManaRegen, Category = "Secondary Attributes")
+	FGameplayAttributeData ManaRegen;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, ManaRegen);
+
+	UFUNCTION()
+	void OnRep_ManaRegen(const FGameplayAttributeData& OldManaRegen) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Perception, Category = "Secondary Attributes")
+	FGameplayAttributeData Perception;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, Perception);
+
+	UFUNCTION()
+	void OnRep_Perception(const FGameplayAttributeData& OldPerception) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Investigation, Category = "Secondary Attributes")
+	FGameplayAttributeData Investigation;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, Investigation);
+
+	UFUNCTION()
+	void OnRep_Investigation(const FGameplayAttributeData& OldInvestigation) const;
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Stealth, Category = "Secondary Attributes")
+	FGameplayAttributeData Stealth;
+	ATTRIBUTE_ACCESSORS(UHeroAttributeSet, Stealth);
+
+	UFUNCTION()
+	void OnRep_Stealth(const FGameplayAttributeData& OldStealth) const;
+
+
 	/*
 		Vital Attributes
 	*/

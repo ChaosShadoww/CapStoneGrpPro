@@ -42,7 +42,7 @@ void AHeroCharacter::InitAbilityActorInfo()
 		}
 	}
 
-	InitializePrimaryAttributes();
+	InitializeDefaultAttributes();
 
 }
 
@@ -59,5 +59,12 @@ void AHeroCharacter::OnRep_PlayerState()
 	Super::OnRep_PlayerState();
 
 	InitAbilityActorInfo();
+}
+
+int32 AHeroCharacter::GetPlayerLevel()
+{
+	const AHeroPlayerState* HeroPlayerState = GetPlayerState<AHeroPlayerState>();
+	check(HeroPlayerState);
+	return HeroPlayerState->GetPlayerLevel();
 }
 
