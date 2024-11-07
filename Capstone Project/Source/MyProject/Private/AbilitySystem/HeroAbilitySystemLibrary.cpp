@@ -22,3 +22,19 @@ UOverlayWidgetController* UHeroAbilitySystemLibrary::GetOverlayWidgetController(
 	}
 	return nullptr;
 }
+
+UAttributeMenuWidgetController* UHeroAbilitySystemLibrary::GetAttributeMenuWidgetController(const UObject* WorldContextObject)
+{
+	if (APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0)) //Get player controller
+	{
+		if (AHeroHUD* HeroHUD = Cast<AHeroHUD>(PC->GetHUD()))								// Get the HUD
+		{
+			AHeroPlayerState* PS = PC->GetPlayerState<AHeroPlayerState>();					//Get the player state
+			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();					//Get the ability system component
+			UAttributeSet* AS = PS->GetAttributeSet();										// Get the attribute set
+			const FWidgetControllerParams WidgetControllerParams(PC, PS, ASC, AS);			//Create the params for widget controllers
+			return HeroHUD->GetAttributeMenuWidgetController(WidgetControllerParams);	// call and return widget controller getter
+		}
+	}
+	return nullptr;
+}

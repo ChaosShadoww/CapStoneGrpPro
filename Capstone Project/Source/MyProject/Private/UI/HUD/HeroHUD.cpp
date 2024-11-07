@@ -5,6 +5,7 @@
 
 #include "UI/Widget/HeroUserWidget.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
+#include "UI/WidgetController/AttributeMenuWidgetController.h"
 
 UOverlayWidgetController* AHeroHUD::GetOverlayWidgetController(const FWidgetControllerParams& WCParams)
 {
@@ -14,9 +15,20 @@ UOverlayWidgetController* AHeroHUD::GetOverlayWidgetController(const FWidgetCont
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);										//Key Variables set
 		OverlayWidgetController->BindCallbacksToDependencies();
 
-		return OverlayWidgetController;																		//Returns widget controller
+																		
 	}
-	return OverlayWidgetController;
+	return OverlayWidgetController;	//Returns widget controller
+}
+
+UAttributeMenuWidgetController* AHeroHUD::GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (AttributeMenuWidgetController == nullptr)
+	{
+		AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+		AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+		AttributeMenuWidgetController->BindCallbacksToDependencies();
+	}
+	return AttributeMenuWidgetController;	//Returns widget controller
 }
 
 void AHeroHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)

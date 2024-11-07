@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Blueprintable)
 class MYPROJECT_API UAttributeMenuWidgetController : public UHeroWidgetController
 {
 	GENERATED_BODY()

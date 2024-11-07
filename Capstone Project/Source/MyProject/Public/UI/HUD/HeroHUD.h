@@ -6,6 +6,7 @@
 #include "GameFramework/HUD.h"
 #include "HeroHUD.generated.h"
 
+class UAttributeMenuWidgetController;
 class UHeroUserWidget;
 class UOverlayWidgetController;
 class UAbilitySystemComponent;
@@ -21,11 +22,11 @@ class MYPROJECT_API AHeroHUD : public AHUD
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY()
-	TObjectPtr<UHeroUserWidget> OverlayWidget;
+	
 
 	//Function that creates the widget controller, only if it hasn't been created yet, if it has, then just return the one widget controller
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
+	UAttributeMenuWidgetController* GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams);
 
 	//Function to initialize the four key variables for widget controller when creating, returning widget controller in the GetOverlayWidgetController func
 	void InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS);
@@ -33,6 +34,9 @@ public:
 
 
 private:
+
+	UPROPERTY()
+	TObjectPtr<UHeroUserWidget> OverlayWidget;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UHeroUserWidget> OverlayWidgetClass;
@@ -43,4 +47,10 @@ private:
 	//UClass for GetOverlayWidgetController Function
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerClass;
+
+	UPROPERTY()
+	TObjectPtr<UAttributeMenuWidgetController> AttributeMenuWidgetController;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UAttributeMenuWidgetController> AttributeMenuWidgetControllerClass;
 };
