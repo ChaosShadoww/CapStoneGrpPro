@@ -66,4 +66,10 @@ void FHeroGameplayTags::InitializeNativeGameplayTags()
 	GameplayTags.Attributes_Secondary_Perception = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Attributes.Secondary.Perception"),
 		FString("Improves visibility; improves armor penetration."));
+	GameplayTags.Attributes_Secondary_Stealth = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Attributes.Secondary.Stealth"),
+		FString("Calculation of character stealth."));
+	GameplayTags.Attributes_Secondary_Investigation = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Attributes.Secondary.Investigation"),
+		FString("Improves detection, chance to find invisible enemies."));
 }

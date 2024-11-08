@@ -34,6 +34,8 @@ public:
 	FGameplayTag Attributes_Secondary_MaxHealth;
 	FGameplayTag Attributes_Secondary_MaxMana;
 	FGameplayTag Attributes_Secondary_Perception;
+	FGameplayTag Attributes_Secondary_Stealth;
+	FGameplayTag Attributes_Secondary_Investigation;
 
 protected:
 

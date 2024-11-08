@@ -6,6 +6,10 @@
 #include "UI/WidgetController/HeroWidgetController.h"
 #include "AttributeMenuWidgetController.generated.h"
 
+struct FHeroAttributeInfo;
+class UAttributeInfo;
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttributeInfoSignature, const FHeroAttributeInfo&, Info);
+
 /**
  * 
  */
@@ -16,4 +20,11 @@ class MYPROJECT_API UAttributeMenuWidgetController : public UHeroWidgetControlle
 public:
 	virtual void BindCallbacksToDependencies() override;
 	virtual void BroadcastInitialValues() override;
+
+	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
+	FAttributeInfoSignature AttributeInfoDelegate;
+
+protected:
+	UPROPERTY(EditDefaultsOnly)
+	TObjectPtr<UAttributeInfo> AttributeInfo;
 };

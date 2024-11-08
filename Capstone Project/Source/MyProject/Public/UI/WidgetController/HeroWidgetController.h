@@ -48,6 +48,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);		// Function to set variables for struct of widget controller
 
+	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitialValues();
 	virtual void BindCallbacksToDependencies();
 	
