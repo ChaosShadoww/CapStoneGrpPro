@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "Net/UnrealNetwork.h"
+#include "HeroGameplayTags.h"
 
 UHeroAttributeSet::UHeroAttributeSet()
 {
@@ -13,6 +14,22 @@ UHeroAttributeSet::UHeroAttributeSet()
 	//InitMaxHealth(100.f);
 	//InitMana(10.f);
 	//InitMaxMana(100.f);
+	const FHeroGameplayTags& GameplayTags = FHeroGameplayTags::Get();
+
+	/*FAttributeSignature StrengthDelegate;
+	StrengthDelegate.BindStatic(UHeroAttributeSet::GetStrengthAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Strength, StrengthDelegate);
+
+	FAttributeSignature IntelligenceDelegate;
+	IntelligenceDelegate.BindStatic(UHeroAttributeSet::GetIntelligenceAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Intelligence, IntelligenceDelegate);*/
+
+	//Using TStaticFuncPtr Map
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Constitution, GetConstitutionAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Dexterity, GetDexterityAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Wisdom, GetDexterityAttribute);
 }
 
 void UHeroAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

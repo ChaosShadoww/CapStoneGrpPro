@@ -15,6 +15,8 @@
  	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
 
+//DECLARE_DELEGATE_RetVal(FGameplayAttribute, FAttributeSignature);			//Connect to TMAP Tags to Attr
+
 USTRUCT()
 struct FEffectProperties
 {
@@ -49,7 +51,10 @@ struct FEffectProperties
 	UPROPERTY()
 	ACharacter* TargetCharacter = nullptr;
 };
-
+//typedef is specific to FGameplayAttribute() signature, but TStaticFuncPtr is generic to any signature
+//typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
+template<class T>
+using TStaticFuncPtr = typename TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr;
 /**
  * 
  */
@@ -65,6 +70,18 @@ public:
 	//For Clamping
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
+
+
+	//TMap<FGameplayTag, FAttributeSignature> TagsToAttribute;
+	//Tags to FunctionPtr
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttribute;
+
+	/*Example of Generic Application
+	TStaticFuncPtr<float(int32, float, int32)> RandomFunctionPointer;
+	float RandomFunction(int32 I, float P, int32 J) { return 0; }*/
+
+
+	//TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FunctionPointer; Just for testing Purposes
 
 	/*
 		Primary Attributes
