@@ -25,11 +25,27 @@ UHeroAttributeSet::UHeroAttributeSet()
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Intelligence, IntelligenceDelegate);*/
 
 	//Using TStaticFuncPtr Map
+	/* Primary Attributes */
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Strength, GetStrengthAttribute);
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Intelligence, GetIntelligenceAttribute);
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Constitution, GetConstitutionAttribute);
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Dexterity, GetDexterityAttribute);
 	TagsToAttribute.Add(GameplayTags.Attributes_Primary_Wisdom, GetDexterityAttribute);
+
+	/* Secondary Attributes */
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_ArmorClass, GetArmorClassAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_ArmorPenetration, GetArmorPenetrationAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_BlockChance, GetBlockChanceAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_CriticalHitChance, GetCriticalHitChanceAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_CriticalHitDamage, GetCriticalHitDamageAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_CriticalHitResistance, GetCriticalHitResistanceAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_HealthRegen, GetHealthRegenAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_ManaRegen, GetManaRegenAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_MaxHealth, GetMaxHealthAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_MaxMana, GetMaxManaAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_Perception, GetPerceptionAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_Stealth, GetStealthAttribute);
+	TagsToAttribute.Add(GameplayTags.Attributes_Secondary_Investigation, GetInvestigationAttribute);
 }
 
 void UHeroAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
