@@ -5,13 +5,15 @@
 #include "CoreMinimal.h"
 #include "Character/PaperCharacterBase.h"
 #include "Interaction/EnemyInterface.h"
+#include "BehaviorTree/BehaviorTree.h"
+#include "AICombatInterface.h"
 #include "HeroEnemy.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MYPROJECT_API AHeroEnemy : public APaperCharacterBase, public IEnemyInterface
+class MYPROJECT_API AHeroEnemy : public APaperCharacterBase, public IEnemyInterface, public IAICombatInterface
 {
 	GENERATED_BODY()
 	
@@ -27,6 +29,9 @@ public:
 	virtual void UnHighlightActor() override;
 	/**Enemy Interface*/
 
+
+	UBehaviorTree* GetBehaviorTree() const;
+
 	/**Combat Interface**/
 	virtual int32 GetPlayerLevel() override;
 	/*End Combat Interface*/
@@ -40,4 +45,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character Class Defauts")
 	int32 Level = 1;
+
+private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI", meta = (AllowPrivateAccess = "true"))
+	UBehaviorTree* Tree;
+
 };

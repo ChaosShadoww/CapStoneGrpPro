@@ -5,6 +5,9 @@
 #include "PaperFlipbookComponent.h"
 #include "AbilitySystemComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "Perception/AISenseConfig_Sight.h"
+#include "Perception/AISense_Sight.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -42,6 +45,10 @@ APaperCharacterBase::APaperCharacterBase()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
+
+	StimulusSource = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("Stimulus"));
+	StimulusSource->RegisterForSense(TSubclassOf<UAISense_Sight>());
+	StimulusSource->RegisterWithPerceptionSystem();
 }
 
 UAbilitySystemComponent* APaperCharacterBase::GetAbilitySystemComponent() const

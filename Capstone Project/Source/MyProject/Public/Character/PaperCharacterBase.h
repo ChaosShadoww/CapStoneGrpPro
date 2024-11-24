@@ -14,6 +14,7 @@
 
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UAIPerceptionStimuliSourceComponent;
 class UGameplayEffect;
 /**
  * 
@@ -43,6 +44,11 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Camera")				// Camera Component
 	TObjectPtr<UCameraComponent> HeroCamera;
 
+
+	//AI Senses for Enemies
+	UPROPERTY(EditAnywhere, Category = "AI Senses")
+	UAIPerceptionStimuliSourceComponent* StimulusSource;
+
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
@@ -62,6 +68,7 @@ protected:
 
 	void ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float Level) const;
 	void InitializeDefaultAttributes() const;
+	//void SetupStimulusSource();
 	/*
 	void InitializePrimaryAttributes() const;
 	void InitializeSecondaryAttributes() const;

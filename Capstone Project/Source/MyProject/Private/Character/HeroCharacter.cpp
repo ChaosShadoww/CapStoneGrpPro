@@ -25,6 +25,10 @@ void AHeroCharacter::Turn(float TurnVector)
 
 void AHeroCharacter::InitAbilityActorInfo()
 {
+	
+	//SetupStimulusSource();
+
+
 	AHeroPlayerState* HeroPlayerState = GetPlayerState<AHeroPlayerState>();
 	check(HeroPlayerState);
 	HeroPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(HeroPlayerState, this);
@@ -45,6 +49,15 @@ void AHeroCharacter::InitAbilityActorInfo()
 	InitializeDefaultAttributes();
 
 }
+
+//void AHeroCharacter::SetupStimulusSource()
+//{
+//	if (StimulusSource)
+//	{
+//		StimulusSource->RegisterForSense(TSubclassOf<UAISense_Sight>());
+//		StimulusSource->RegisterWithPerceptionSystem();
+//	}
+//}
 
 void AHeroCharacter::PossessedBy(AController* NewController)
 {

@@ -56,6 +56,7 @@ void ANPC_AIController::OnTargetDetected(AActor* Actor, FAIStimulus const Stimul
 {
 	if (auto* const ch = Cast<AHeroCharacter>(Actor))
 	{
+		//UE_LOG(LogTemp, Warning, TEXT("Success?"));
 		GetBlackboardComponent()->SetValueAsBool("Can See Player", Stimulus.WasSuccessfullySensed());
 	}
 }

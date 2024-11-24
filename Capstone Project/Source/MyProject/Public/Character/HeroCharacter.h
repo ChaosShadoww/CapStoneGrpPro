@@ -22,6 +22,11 @@ private:
 
 	virtual void InitAbilityActorInfo() override;
 
+
+
+	//class UAIPerceptionStimuliSourceComponent* StimulusSource;
+	//void SetupStimulusSource();
+
 public:
 	
 	virtual void PossessedBy(AController* NewController) override;
@@ -29,5 +34,7 @@ public:
 	/*Combat Interface*/
 	virtual int32 GetPlayerLevel() override;
 	/*End Combat Interface*/
+	
+
 
 };

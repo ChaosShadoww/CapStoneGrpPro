@@ -49,6 +49,11 @@ void AHeroEnemy::UnHighlightActor()
 	
 }
 
+UBehaviorTree* AHeroEnemy::GetBehaviorTree() const
+{
+	return Tree;
+}
+
 int32 AHeroEnemy::GetPlayerLevel()
 {
 	return Level;
